@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio | ALEX BELLO</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="nav-overlay" id="nav-overlay"></div>
+  <header class="header">
+    <div class="container nav-container">
+      <h1 class="logo"><a href="#inicio">ALEX BELLO</a></h1>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#sobre-mi">Sobre mí</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#certificaciones">Certificaciones</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle">🌙</button>
+      <button class="hamburger" id="hamburger"></button>
+    </div>
+  </header>
+
+<!-- HERO -->
+<section id="inicio" class="hero reveal">
+  <div class="container hero-content">
+    
+    <!-- Imagen a la izquierda -->
+    <div class="hero-img">
+      <img src="assets/perfil.jpeg" alt="Alex Bello Foto">
+    </div>
+
+    <!-- Texto y botones a la derecha -->
+    <div class="hero-text">
+      <h2 class="from-left">Hola, soy <span>Desarrollador Web</span></h2>
+      <p class="from-right">Especializado en crear sitios modernos y funcionales.</p>
+      <div class="btn-group">
+        <a href="#proyectos" class="btn from-left">Ver Proyectos</a>
+        <a href="assets/CV_AlexBello_2025.pdf" target="_blank" class="btn from-right">Hoja de Vida</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- SOBRE MÍ -->
+<section id="sobre-mi" class="about" aria-label="Sección Sobre mí">
+  <div class="about-wrapper">
+    
+    <!-- Columna de texto -->
+    <article class="about-text from-left">
+      <h2>Sobre mí</h2>
+      <p>Soy un desarrollador web apasionado por la creación de experiencias interactivas y funcionales. Me encanta trabajar con tecnologías modernas como HTML, CSS, JavaScript, Angular y Firebase.</p>
+      <p>Actualmente estoy perfeccionando mis habilidades tanto en frontend como en la experiencia de usuario (UX/UI).</p>
+    </article>
+
+    <!-- Columna del semicírculo -->
+    <aside class="circle-container" aria-hidden="true">
+      <div class="orbit-wrapper">
+        <div class="orbit-item item1"><img src="assets/html5.svg" alt="HTML5" /></div>
+        <div class="orbit-item item2"><img src="assets/css.svg" alt="CSS3" /></div>
+        <div class="orbit-item item3"><img src="assets/jss.svg" alt="JavaScript" /></div>
+        <div class="orbit-item item4"><img src="assets/angular.svg" alt="Angular" /></div>
+        <div class="orbit-item item5"><img src="assets/firebase.svg" alt="Firebase" /></div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+
+
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="projects reveal">
+    <div class="projects-inner">
+      <h2  class="from-left">Proyectos</h2>
+      <div class="project-grid">
+        <div class="project-card from-right">
+          <h3>Blackjack Web</h3>
+          <p>Juego interactivo con JavaScript y TypeScript.</p>
+        </div>
+        <div class="project-card from-left">
+          <h3>My Look App</h3>
+          <p>App social de servicios de belleza con agendamiento y pagos.</p>
+        </div>
+         <div class="project-card from-right">
+          <h3>Blackjack Web</h3>
+          <p>Juego interactivo con JavaScript y TypeScript.</p>
+        </div>
+        <div class="project-card from-left">
+          <h3>My Look App</h3>
+          <p>App social de servicios de belleza con agendamiento y pagos.</p>
+        </div>
+         <div class="project-card from-right">
+          <h3>Blackjack Web</h3>
+          <p>Juego interactivo con JavaScript y TypeScript.</p>
+        </div>
+        <div class="project-card from-left">
+          <h3>My Look App</h3>
+          <p>App social de servicios de belleza con agendamiento y pagos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ========== CERTIFICACIONES ========== -->
+<section id="certificaciones" class="certificaciones reveal">
+  <h2 class="from-up">Certificaciones</h2>
+
+  <div class="cert-carousel">                 <!-- Marco glass -->
+    <button class="cert-btn prev" aria-label="Anterior">❮</button>
+
+    <div class="cert-track">                  <!-- Pista deslizante -->
+      <!-- Tarjetas -->
+      <div class="cert-item">
+        <img src="assets/angular.svg" alt="Certificado Angular">
+        <h4>Angular</h4>
+        <p>Componentes y CLI.</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="assets/firebase.svg" alt="Certificado Firebase">
+        <h4>Firebase</h4>
+        <p>Auth & Firestore.</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="assets/css.svg" alt="Certificado CSS">
+        <h4>CSS Avanzado</h4>
+        <p>Layout y animaciones.</p>
+      </div>
+
+      <div class="cert-item">
+        <img src="assets/html5.svg" alt="Certificado HTML">
+        <h4>HTML5</h4>
+        <p>Semántica y accesibilidad.</p>
+      </div>
+
+      <!-- duplica .cert-item para más tarjetas -->
+    </div>
+
+    <button class="cert-btn next" aria-label="Siguiente">❯</button>
+  </div>
+</section>
+
+
+
+ <!-- CONTACTO -->
+<section id="contacto" class="contact reveal">
+  <div class="container contact-container">
+    <div class="contact-info from-left">
+      <img src="assets/perfil.jpeg" alt="Logo" class="contact-logo">
+      <p class="contact-text">
+        ¿Tienes un proyecto en mente? <br />
+        Estoy listo para ayudarte. Escríbeme y lo hablamos.
+      </p>
+    </div>
+    
+    <form>
+      <h2 class="contact-title from-left">Contacto</h2>
+      <input type="text" placeholder="Tu nombre" class="from-right" required />
+      <input type="email" placeholder="Tu correo" class="from-left" required />
+      <textarea placeholder="Tu mensaje" class="from-right" required></textarea>
+      <button type="submit" class="btn from-left">Enviar</button>
+    </form>
+  </div>
+</section>
+
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Alex Bello - Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

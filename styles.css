@@ -1,0 +1,971 @@
+/* =============== RESET BÁSICO =============== */
+* {
+  margin: 0; /* Elimina el margen por defecto de todos los elementos */
+  padding: 0; /* Elimina el relleno por defecto de todos los elementos */
+  box-sizing: border-box; /* Incluye el padding y el border dentro del tamaño total del elemento */
+}
+
+html, body {
+  scroll-behavior: smooth; /* Desplazamiento suave al navegar con anclas */
+}
+
+/* =============== TEMA CLARO/OSCURO AUTOMÁTICO =============== */
+body {
+  font-family: 'Segoe UI', sans-serif; /* Tipo de letra predeterminada */
+  line-height: 1.6; /* Altura entre líneas para mejorar legibilidad */
+  background: #c8cad4; /* Color de fondo claro por defecto */
+  color: #333; /* Color de texto por defecto */
+  overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+  transition: background 0.4s, color 0.4s; /* Transición suave al cambiar de tema */
+}
+
+
+
+
+/* =============== BOTÓN DE CAMBIO DE TEMA =============== */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem; /* Tamaño del ícono del botón de tema */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  color: #fff;
+  transition: transform 0.3s; /* Animación al hacer hover */
+  z-index: 1002; /* Se mantiene visible sobre otros elementos */
+}
+.theme-toggle:hover {
+  transform: scale(1.2); /* Escala al pasar el cursor */
+}
+
+
+/* =============== TEMA CLARO Y OSCURO =============== */
+/* Tema claro */
+.light-theme {
+  background-color: #c8cad4;
+    color: #000000;
+  }
+.light-theme .header,
+.light-theme .footer {
+  background-color: #020c23;
+  color: #ffffff;
+}
+
+.light-theme .about-text h2 {
+  color: #05052c; /* O el color que quieras */
+} 
+
+.light-theme .about-text {
+  color: #000;
+  box-shadow: 0 4px 20px rgba(123, 125, 134, 0.668);
+} 
+
+/* Fondo de la sección Proyectos para tema claro */
+.light-theme .projects {
+  background: #020c23 ; /* Puedes ajustar este color a tu gusto */
+}
+
+/* Título Proyectos en tema claro */
+.light-theme #proyectos h2 {
+  color: #fdfdfe !important; /* O el color que quieras */
+}
+.light-theme .project-card {
+  background: #c5c2d2;
+  border-color: #9494b0;
+}
+
+.light-theme .project-card:hover {
+  box-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+
+
+
+.light-theme .certificaciones h2 {
+  color: #05052c;
+  margin-bottom: 1.5rem;
+}
+.light-theme .cert-item {
+  background-color: #d4d1d1;
+  border-color: #cccccc;
+  color: #000000;
+}
+.light-theme .cert-item img {
+  border-radius: 5px;
+}
+.light-theme .cert-item h4 {
+  color: #0a0a0a;
+}
+
+.light-theme .contact-title {
+  color: #0dee11;
+  border-color: #00e77f;
+}
+
+/* Tema oscuro */
+.dark-theme {
+  background-color: #020c23;
+  color: #f0f0f0;
+}
+.dark-theme .header,
+.dark-theme .footer {
+  background-color: #020c23;
+  color: #fff;
+}
+
+.dark-theme .about-text h2 {
+  color: #00ff95; /* O el color que quieras */
+}
+
+.dark-theme .about-text {
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(49, 138, 80, 0.668);
+}
+
+/* Fondo de la sección Proyectos para tema oscuro */
+.dark-theme .projects {
+  background: #020c23; /* Puedes ajustar este color a tu gusto */
+}
+
+/* Título Proyectos en tema oscuro */
+.dark-theme #proyectos h2 {
+  color: #00ff95 !important; /* O el color que quieras */
+}
+
+.dark-theme .project-card {
+  background: #1b1b36;
+  border-color: #78e687;
+}
+
+.dark-theme .project-card h3 {
+  color: #ececec;
+}
+.dark-theme .project-card:hover {
+  box-shadow: 0px 0px 10px rgb(62, 255, 110);
+}
+
+.dark-theme .certificaciones h2 {
+  color: #13d240;
+  margin-bottom: 1.5rem;
+}
+
+
+.dark-theme .cert-item {
+  background-color: #1d2540;
+  border-color: #148c1c;
+  color: #ffffff;
+}
+.dark-theme .cert-item h4 {
+  color: #64b1ff;
+}
+
+.dark-theme .contact-title {
+  color: #18c126;
+  border-color: #78e6aa;
+}
+
+/* =============== CONTENEDOR GENERAL =============== */
+.container {
+  width: 90%; /* El contenido ocupa el 90% del ancho del navegador */
+  max-width: 1100px; /* Límite máximo de ancho */
+  margin: auto; /* Centra el contenedor horizontalmente */
+}
+
+/* =============== NAVEGACIÓN =============== */
+.header {
+  background:#020c23;
+  color: #fff;
+  padding: 1rem 0; /* Espaciado vertical interno */
+  position: sticky; /* Se mantiene fija al hacer scroll */
+  top: 0;
+  z-index: 1001;
+  height: 80px; /* Altura del header */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between; /* Elementos separados a ambos lados */
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.logo a {
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-decoration: none; /* Sin subrayado */
+  color: inherit; /* Hereda el color del contenedor */
+}
+
+.nav-list {
+  display: flex;
+  list-style: none; /* Quita los puntos de lista */
+  gap: 1.5rem; /* Espacio entre los elementos */
+}
+
+.nav-list a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s; /* Transición de color suave */
+}
+
+.nav-list a:hover {
+  color: #109d31;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem; /* Tamaño del icono */
+  color: #4bd35f;
+  cursor: pointer;
+  z-index: 1003;
+}
+.hamburger.active::before {
+  content: '\2715'; /* Icono de cerrar (X) */
+}
+.hamburger::before {
+  content: '\2630'; /* Icono de hamburguesa (|||) */
+}
+
+/* Overlay para cerrar al tocar fuera */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+.nav-overlay.active {
+  display: block;
+}
+
+/* ============== respopnsive MENÚ HAMBURGUESA ===================== */
+
+/* lista lateral – solo visible en ≤768 px */
+@media (max-width: 768px) {
+  .nav-list {
+    /* layout */
+    position: fixed;
+    top: 80px;          /* debajo del header */
+    right: -300px;         /* fuera de pantalla por defecto */
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 5rem 1.5rem 2rem;
+
+    /* estilo visual */
+    width: 300px;
+    height: 100vh;
+    background: #202057;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.45);
+
+    /* animación */
+    transition: right 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+
+    /* capas */
+    z-index: 1002;         /* encima del overlay (1000) */
+  }
+
+  /* lista cuando está abierta */
+  .nav-list.active {
+    right: 0;              /* se desliza dentro */
+    opacity: 1;
+  }
+
+  /* items con fade-in secuenciado */
+  .menu-fade-in {
+    animation: slideIn 0.4s ease forwards;
+  }
+
+  /* botón hamburguesa visible solo en móvil */
+  .hamburger {
+    display: block;
+  }
+}
+
+/* overlay: ya lo tienes; asegura transición de opacidad */
+.nav-overlay {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+.nav-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+
+/* =============== HERO SECTION =============== */
+.hero {
+ align-items: center; 
+  background: #020c23; /* Fondo oscuro */
+  color: #ffffff; /* Texto blanco */
+  display: flex; 
+  justify-content: center; 
+  min-height: 100vh; /* Altura mínima de la sección hero */
+  overflow: hidden; /* Oculta el desplazamiento horizontal */
+  padding: 4rem 1rem;
+  position: relative;
+  text-align: left;
+  z-index: 1;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero-img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1 300px;
+}
+
+.hero-img::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 340px;
+  border-radius: 3rem;
+  border: 3px solid transparent;
+  box-sizing: border-box;
+  z-index: 1;
+  animation: borderTracer 5s linear infinite;
+  background: linear-gradient(90deg, transparent 30%, #0bae4c, transparent 70%);
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  -webkit-mask: 
+    linear-gradient(#000000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+}
+
+.hero-img img {
+  max-width: 250px;
+  width: 100%;
+  height: auto;
+  border-radius: 3rem;
+  
+  position: relative;
+  z-index: 2;
+}
+
+/* Animación que desplaza el gradiente para simular movimiento */
+@keyframes borderTracer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+
+.hero-text {
+  flex: 1 1 400px;
+}
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+/* =============== EFECTO NEÓN INTERMITENTE PARA .hero-text h2 span =============== */
+.hero-text h2 span {
+  color: #21ff3e; /* Verde neón */
+  font-weight: bold;
+  animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Animación del parpadeo neón */
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 5px #159644,
+                 0 0 8px #119627,
+                 0 0 20px #119627,
+                 0 0 8px #119627;
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 2px #119627,
+                 0 0 4px #119627,
+                 0 0 8px #119627,
+                 0 0 8px #119627;
+    opacity: 0.7;
+  }
+  100% {
+    text-shadow: 0 0 0px #119627,
+                 0 0 2px #119627,
+                 0 0 4px #119627,
+                 0 0 8px #119627;
+    opacity: 0.5;
+  }
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  
+}
+
+/* =============== BOTONES HERO PERSONALIZADOS CON EFECTO DE LUZ =============== */
+.btn {
+  padding: 0.8rem 1.6rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none; /* Sin subrayado */
+  border: 2px solid transparent;  /* Borde transparente por defecto */
+  border-radius: 50px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+
+
+/* Botón izquierdo personalizado (Ver Proyectos) */
+.btn.from-left {
+  color: #ffffff;
+  border-color: #92fa0a;
+}
+.btn.from-left:hover {
+  background-color: #92fa0a;
+  color: #000;
+  box-shadow: 0 0 10px #92fa0a, 0 0 10px #92fa0a;
+}
+
+/* Botón derecho personalizado (Hoja de Vida) */
+.btn.from-right {
+  color: #ffffff;
+  border-color: #3fc1cb;
+}
+.btn.from-right:hover {
+  background-color: #00f0ff;
+  color: #000;
+  box-shadow: 0 0 10px #00f0ff, 0 0 10px #00f0ff;
+}
+
+
+/* =============== RESPONSIVE HERO =============== */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-img {
+    order: -1; /* Muestra la imagen arriba */
+  }
+
+  .hero-text h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn-group {
+    justify-content: center;
+  }
+}
+
+/* =============== SOBRE MÍ =============== */
+
+.about-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* centra el conjunto */
+  align-items: center;
+  gap: 3rem;
+  min-height: 70vh;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+
+
+
+.about-text {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+
+  color: #020202;
+  display: flex;
+   flex: 0 0 500px;
+  max-width: 500px;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem 3rem 1.5rem 1.5rem;   
+  text-align: left;
+height: auto;
+  
+  position: relative;
+  z-index: 1;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+/* CONTENEDOR GENERAL DEL SEMICÍRCULO */
+.circle-container {
+  flex: 0 0 250px;
+  max-width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  position: relative;
+}
+
+/* CÍRCULO GIRATORIO */
+.orbit-wrapper {
+  animation: spinOrbit 20s linear infinite;
+  height: 200px;
+  position: relative;
+  transform: translateX(50%);
+  width: 200px;
+}
+
+@keyframes spinOrbit {
+  0% {
+    transform: translateX(50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(50%) rotate(360deg);
+  }
+}
+
+/* ÍCONOS QUE ORBITAN */
+.orbit-item {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-origin: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  width: 70px;
+}
+
+.orbit-item img {
+  height: auto;
+  transition: transform 0.3s ease;
+  width: 60%;
+}
+
+/* POSICIONES DE LOS ÍCONOS */
+  .item1 { transform: rotate(225deg) translateX(120px) rotate(-225deg); }
+  .item2 { transform: rotate(157.5deg) translateX(120px) rotate(-157.5deg); }
+  .item3 { transform: rotate(90deg) translateX(120px) rotate(-90deg); }
+  .item4 { transform: rotate(22.5deg) translateX(120px) rotate(-22.5deg); }
+  .item5 { transform: rotate(-45deg) translateX(120px) rotate(45deg); }
+
+
+/* ========= MEDIA QUERIES: TABLET ========= */
+@media (max-width: 1024px) {
+  .about-wrapper {
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    padding: 1rem 1rem;
+    min-height: 50vh;
+  height: auto;
+  }
+
+  .about-text {
+    flex: 1;
+    padding-right: 1rem;
+    text-align: left;
+    padding: 1.5rem 3rem 1.5rem 1.5rem; 
+  }
+
+  .circle-container {
+    flex: 1;
+    justify-content: center;
+    height: auto;
+    overflow: visible;
+  }
+
+  .orbit-wrapper {
+    height: 300px;
+    transform: translateX(0);
+    width: 300px;
+  }
+
+  .orbit-item {
+    height: 50px;
+    width: 50px;
+  }
+
+  .orbit-item img {
+    width: 60%;
+  }
+
+  
+}
+
+/* ========= MEDIA QUERIES: MÓVILES ========= */
+@media (max-width: 600px) {
+  .about-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .circle-container {
+    order: 2;
+    margin-top: 2rem;
+  }
+}
+
+
+
+/* =============== SECCIÓN DE PROYECTOS =============== */
+.projects {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  background: #020c23;
+  position: relative;
+}
+
+.projects-inner {
+  width: 90%;
+  max-width: 1100px;
+  padding: 4rem 1rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 2rem;
+}
+
+.projects-inner h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.project-card {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #1e1e2f;
+  transition: box-shadow 0.3s;
+  color: #ffffff;
+}
+
+.project-card:hover {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* =============== proyectos en móviles =============== */
+@media (max-width: 768px) {
+  .projects {
+    padding: 0;
+  }
+
+  .projects-inner {
+    padding: 4rem 1rem 3rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .project-card {
+    padding: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .project-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-card p {
+    font-size: 1rem;
+  }
+
+  .projects-inner h2 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+
+
+/* =============== CERTIFICACIONES – CARRUSEL GLASS =============== */
+.certificaciones{
+  /* centra vertical y horizontalmente todo lo que contenga */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;   /* <<‑‑ vertical */
+  
+  min-height:100vh;         /* ocupa toda la ventana */
+  
+  padding:0;                /* quitamos padding top/bottom */
+  row-gap:2rem;             /* espacio entre h2 y carrusel */
+}
+
+.certificaciones h2{font-size:2rem;margin-bottom:2rem;color:#ffffff}
+
+/* Marco glass */
+.cert-carousel{
+  position:relative;width:90%;max-width:900px;overflow:hidden;
+  border-radius:20px;backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.05);
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+/* Botones flecha */
+.cert-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:42px;height:42px;border:none;border-radius:50%;
+  font-size:1.4rem;color:#fff;background:rgba(255,255,255,.25);
+  backdrop-filter:blur(6px);cursor:pointer;z-index:2;
+  transition:background .3s;
+}
+.cert-btn:hover{background:rgba(255,255,255,.5)}
+.cert-btn.prev{left:10px}
+.cert-btn.next{right:10px}
+
+/* Pista deslizante */
+.cert-track{
+  display:flex;gap:1.5rem;padding:2rem 2.5rem;
+  overflow-x:auto;scroll-behavior:smooth;
+  scroll-snap-type:x mandatory;
+}
+.cert-track::-webkit-scrollbar{display:none}
+.cert-track{scrollbar-width:none}
+
+/* Tarjetas */
+.cert-item{
+  flex:0 0 250px;scroll-snap-align:center;
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:16px;padding:1.5rem;text-align:center;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+  transition:transform .4s,box-shadow .4s;
+}
+.cert-item:hover{
+  transform:translateY(-8px) scale(1.03);
+  box-shadow:0 12px 25px rgba(7, 215, 108, 0.25);
+}
+.cert-item img{width:80px;margin-bottom:1rem;border-radius:8px}
+.cert-item h4{margin:.5rem 0;color:#fff}
+.cert-item p{font-size:.9rem;color:#e0e0e0}
+
+/* Responsive: en móviles sigue el swipe táctil */
+@media(max-width:768px){
+  .cert-track{padding:1.5rem 1.5rem}
+  .cert-item{flex:0 0 220px}
+}
+
+
+/* =============== SECCIÓN DE CONTACTO =============== */
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  background-color: #020c23;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap; /* Permite el apilado en móviles */
+}
+
+.contact-info {
+  flex: 1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.contact-logo {
+  width: 120px;
+  margin-bottom: 1.5rem;
+}
+
+.contact-text {
+  font-size: 1.1rem;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+/* FORMULARIO */
+.contact form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: transparent;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.contact-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 5px solid #0bed87;
+  text-align: left;
+}
+
+/* =============== RESPONSIVE PARA MÓVILES =============== */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .contact form {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .contact input,
+  .contact textarea {
+    font-size: 1rem;
+  }
+
+  .contact-logo {
+    width: 90px;
+  }
+
+  .contact-text {
+    font-size: 1rem;
+  }
+
+  .contact .btn {
+    width: 100%;
+  }
+}
+
+
+
+.footer {
+  background: #1e1e2f;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* =============== ANIMACIONES GENERALES =============== */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px); /* Inicia desplazado hacia abajo */
+  transition: opacity 1s ease, transform 1s ease; /* 1 segundo de duración */
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.from-left {
+  opacity: 0;
+  transform: translateX(-60px); /* Desde la izquierda */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.from-right {
+  opacity: 0;
+  transform: translateX(60px); /* Desde la derecha */
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.from-left.active,
+.from-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+
+
+/* =============== ANIMACIÓN PERSONALIZADA PARA MENÚ =============== */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.menu-fade-in {
+  animation: slideIn 0.4s ease forwards; /* Animación de entrada de cada item */
+}
