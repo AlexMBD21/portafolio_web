@@ -554,16 +554,15 @@ height: auto;
   animation: spinOrbit 20s linear infinite;
   height: 200px;
   position: relative;
-  transform: translateX(50%);
   width: 200px;
 }
 
 @keyframes spinOrbit {
   0% {
-    transform: translateX(50%) rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    transform: translateX(50%) rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
