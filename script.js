@@ -11,6 +11,8 @@ function setupRevealAnimations() {
           .forEach(el => observer.observe(el));
 }
 
+
+
 // ----------- Cambio de tema -----------
 const toggleBtn = document.getElementById('theme-toggle');
 function applyStoredTheme() {
@@ -28,15 +30,8 @@ toggleBtn.addEventListener('click', () => {
   toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
 });
 
-// --- Carrusel de Certificaciones ---
-const track = document.querySelector('.cert-track');
-const prev  = document.querySelector('.cert-btn.prev');
-const next  = document.querySelector('.cert-btn.next');
-if (track && prev && next){
-  const cardWidth = 250 + 24; // tarjeta + gap
-  next.onclick = () => track.scrollBy({ left:  cardWidth, behavior:'smooth' });
-  prev.onclick = () => track.scrollBy({ left: -cardWidth, behavior:'smooth' });
-}
+
+
 
 // ----------- Menú Hamburguesa -----------
 const hamburger  = document.getElementById('hamburger');
@@ -72,13 +67,6 @@ navList.querySelectorAll('a').forEach(link =>
   link.addEventListener('click', closeMenu)
 );
 
-// ----------- Inicialización al cargar -----------
-window.addEventListener('load', () => {
-  setupRevealAnimations();
-  applyStoredTheme();
-});
-
-
 // ----------- Ajuste de Scroll para evitar que el header tape las secciones -----------
 
 const headerOffset = document.querySelector('.header')?.offsetHeight || 80;
@@ -97,3 +85,55 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// --- Carrusel de Certificaciones ---
+const track = document.querySelector('.cert-track');
+const prev  = document.querySelector('.cert-btn.prev');
+const next  = document.querySelector('.cert-btn.next');
+if (track && prev && next){
+  const cardWidth = 250 + 24; // tarjeta + gap
+  next.onclick = () => track.scrollBy({ left:  cardWidth, behavior:'smooth' });
+  prev.onclick = () => track.scrollBy({ left: -cardWidth, behavior:'smooth' });
+}
+
+// ----------- Animaciones de habilidades -----------
+function setupSkillAnimations() {
+  const skills = document.querySelectorAll('.skill');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const skill = entry.target;
+        const percentage = skill.getAttribute('data-percentage');
+        const progress = skill.querySelector('.progress');
+        const offset = 314 - (314 * percentage / 100);
+        progress.style.strokeDashoffset = offset;
+
+        // observer.unobserve(skill); // Evita que se repita
+
+        // Usa esto si quieres repetir animación:
+        progress.style.transition = 'none';
+        progress.style.strokeDashoffset = 314;
+        setTimeout(() => {
+          progress.style.transition = 'stroke-dashoffset 2s ease-out';
+          progress.style.strokeDashoffset = offset;
+        }, 100);
+      }
+    });
+  }, {
+    threshold: 0.6
+  });
+
+  skills.forEach(skill => observer.observe(skill));
+}
+
+
+// ----------- Inicialización al cargar -----------
+window.addEventListener('load', () => {
+  setupRevealAnimations();
+  applyStoredTheme();
+  setupSkillAnimations();
+});
+
+
+

@@ -58,6 +58,14 @@ body {
   box-shadow: 0 4px 20px rgba(123, 125, 134, 0.668);
 } 
 
+.light-theme .skills-section {
+  background-color: #c8cad4;
+}
+
+.light-theme .section-title {
+color: #080808;
+
+}
 /* Fondo de la sección Proyectos para tema claro */
 .light-theme .projects {
   background: #020c23 ; /* Puedes ajustar este color a tu gusto */
@@ -65,38 +73,40 @@ body {
 
 /* Título Proyectos en tema claro */
 .light-theme #proyectos h2 {
-  color: #fdfdfe !important; /* O el color que quieras */
+  color: #ffffff !important; /* O el color que quieras */
 }
 .light-theme .project-card {
-  background: #c5c2d2;
-  border-color: #9494b0;
+  background: #182736;
+  border-color: #53538c;
+}
+
+.light-theme .projects-inner h3{
+  color: #0daa4c !important;
 }
 
 .light-theme .project-card:hover {
   box-shadow: 0px 0px 5px rgb(255, 255, 255);
 }
 
-
-
 .light-theme .certificaciones h2 {
-  color: #05052c;
+  color: #000000;
   margin-bottom: 1.5rem;
 }
 .light-theme .cert-item {
-  background-color: #d4d1d1;
-  border-color: #cccccc;
-  color: #000000;
+  background-color: #020c23;
+  border-color: #babcc9;
+  color: #94d7ab;
 }
 .light-theme .cert-item img {
   border-radius: 5px;
 }
 .light-theme .cert-item h4 {
-  color: #0a0a0a;
+  color:#00e77f ;
 }
 
 .light-theme .contact-title {
-  color: #0dee11;
-  border-color: #00e77f;
+  color: #ffffff;
+  border-color:#0daa4c;
 }
 
 /* Tema oscuro */
@@ -111,12 +121,20 @@ body {
 }
 
 .dark-theme .about-text h2 {
-  color: #00ff95; /* O el color que quieras */
+  color: #00e77f; /* O el color que quieras */
 }
 
 .dark-theme .about-text {
   color: #fff;
   box-shadow: 0 4px 20px rgba(49, 138, 80, 0.668);
+}
+
+.dark-theme .skills-section {
+  color: #00e77f;
+}
+
+.dark-theme .skill-label {
+  color: #fff;
 }
 
 /* Fondo de la sección Proyectos para tema oscuro */
@@ -126,7 +144,7 @@ body {
 
 /* Título Proyectos en tema oscuro */
 .dark-theme #proyectos h2 {
-  color: #00ff95 !important; /* O el color que quieras */
+  color: #00e77f !important; /* O el color que quieras */
 }
 
 .dark-theme .project-card {
@@ -142,7 +160,7 @@ body {
 }
 
 .dark-theme .certificaciones h2 {
-  color: #13d240;
+  color: #00e77f;
   margin-bottom: 1.5rem;
 }
 
@@ -153,12 +171,12 @@ body {
   color: #ffffff;
 }
 .dark-theme .cert-item h4 {
-  color: #64b1ff;
+  color: #00e77f;
 }
 
 .dark-theme .contact-title {
-  color: #18c126;
-  border-color: #78e6aa;
+  color: #00e77f;
+  border-color: #54af05;
 }
 
 /* =============== CONTENEDOR GENERAL =============== */
@@ -339,16 +357,16 @@ body {
   width: 260px;
   height: 340px;
   border-radius: 3rem;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
   box-sizing: border-box;
   z-index: 1;
   animation: borderTracer 5s linear infinite;
-  background: linear-gradient(90deg, transparent 30%, #0bae4c, transparent 70%);
+  background: linear-gradient(90deg, transparent 30%, #0bae1e, transparent 70%);
   background-size: 300% 100%;
   background-repeat: no-repeat;
   -webkit-mask: 
-    linear-gradient(#000000 0 0) content-box, 
-    linear-gradient(#000 0 0);
+    linear-gradient(#2a2d2a 0 0) content-box, 
+    linear-gradient(#292e2a2e 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   padding: 2px;
@@ -655,6 +673,61 @@ height: auto;
   }
 }
 
+/*==== Habilidades  ====*/
+
+.skills-section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.skill {
+  width: 140px;
+  position: relative;
+}
+
+.skill-label {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Círculo SVG */
+.progress-circle {
+  width: 120px;
+  height: 120px;
+  transform: rotate(-90deg);
+}
+
+.progress-circle circle {
+  fill: none;
+  stroke-width: 10;
+  r: 50;
+  cx: 60;
+  cy: 60;
+}
+
+.progress-circle circle:first-child {
+  stroke: #ddd;
+}
+
+.progress-circle .progress {
+  stroke: #0daa4c;
+  stroke-dasharray: 314; /* 2πr ≈ 314 */
+  stroke-dashoffset: 314;
+  transition: stroke-dashoffset 2s ease-out;
+}
+
 
 
 /* =============== SECCIÓN DE PROYECTOS =============== */
@@ -665,7 +738,7 @@ height: auto;
   min-height: 100vh;
   overflow: hidden;
   padding: 0;
-  background: #020c23;
+  background: #020c23 ;
   position: relative;
 }
 
@@ -683,7 +756,6 @@ height: auto;
 .projects-inner h2 {
   font-size: 2.5rem;
   text-align: center;
-  color: #ffffff;
 }
 
 .project-grid {
@@ -801,7 +873,7 @@ height: auto;
 }
 .cert-item:hover{
   transform:translateY(-8px) scale(1.03);
-  box-shadow:0 12px 25px rgba(7, 215, 108, 0.25);
+  box-shadow:0 12px 25px rgba(255, 255, 255, 0.25);
 }
 .cert-item img{width:80px;margin-bottom:1rem;border-radius:8px}
 .cert-item h4{margin:.5rem 0;color:#fff}
