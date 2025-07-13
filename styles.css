@@ -168,6 +168,9 @@ body {
   margin: auto; /* Centra el contenedor horizontalmente */
 }
 
+
+
+
 /* =============== NAVEGACIÓN =============== */
 .header {
   background:#020c23;
@@ -968,4 +971,13 @@ height: auto;
 }
 .menu-fade-in {
   animation: slideIn 0.4s ease forwards; /* Animación de entrada de cada item */
+}
+
+section,
+[id] {
+  scroll-margin-top: 100px;
+}
+
+section {
+  scroll-margin-top: 100px;
 }

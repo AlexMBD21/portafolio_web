@@ -77,3 +77,23 @@ window.addEventListener('load', () => {
   setupRevealAnimations();
   applyStoredTheme();
 });
+
+
+// ----------- Ajuste de Scroll para evitar que el header tape las secciones -----------
+
+const headerOffset = document.querySelector('.header')?.offsetHeight || 80;
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const targetId = this.getAttribute('href').substring(1);
+    const target = document.getElementById(targetId);
+    if (target) {
+      e.preventDefault();
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
