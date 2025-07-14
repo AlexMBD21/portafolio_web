@@ -9,7 +9,7 @@ html, body {
   scroll-behavior: smooth; /* Desplazamiento suave al navegar con anclas */
 }
 
-/* =============== TEMA CLARO/OSCURO AUTOMÁTICO =============== */
+/* =============== TEMA AUTOMÁTICO =============== */
 body {
   font-family: 'Segoe UI', sans-serif; /* Tipo de letra predeterminada */
   line-height: 1.6; /* Altura entre líneas para mejorar legibilidad */
@@ -222,13 +222,14 @@ color: #080808;
 }
 
 .nav-list a {
+    border-color: 3px rgb(224, 224, 224);
   color: #fff;
   text-decoration: none;
   transition: color 0.3s; /* Transición de color suave */
 }
 
 .nav-list a:hover {
-  color: #109d31;
+  color: #4bd35f;
 }
 
 .hamburger {
@@ -236,7 +237,7 @@ color: #080808;
   background: none;
   border: none;
   font-size: 2rem; /* Tamaño del icono */
-  color: #4bd35f;
+  color: #ffffff;
   cursor: pointer;
   z-index: 1003;
 }
@@ -569,9 +570,9 @@ height: auto;
 
 /* CÍRCULO GIRATORIO */
 .orbit-wrapper {
-  animation: spinOrbit 20s linear infinite;
+  animation: spinOrbit 40s linear infinite;
   height: 200px;
-  position: relative;
+  position:absolute;
   width: 200px;
 }
 
@@ -875,9 +876,15 @@ height: auto;
   transform:translateY(-8px) scale(1.03);
   box-shadow:0 12px 25px rgba(255, 255, 255, 0.25);
 }
-.cert-item img{width:80px;margin-bottom:1rem;border-radius:8px}
+.cert-item img{width:100px;margin-bottom:1rem;border-radius:8px}
 .cert-item h4{margin:.5rem 0;color:#fff}
 .cert-item p{font-size:.9rem;color:#e0e0e0}
+
+.cert-item img:hover {
+  
+  transform:translateY(50px) scale(2.03);
+  box-shadow:0 12px 25px rgba(18, 14, 14, 0.25);
+}
 
 /* Responsive: en móviles sigue el swipe táctil */
 @media(max-width:768px){
