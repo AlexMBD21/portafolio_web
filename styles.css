@@ -97,9 +97,7 @@ color: #080808;
   border-color: #babcc9;
   color: #94d7ab;
 }
-.light-theme .cert-item img {
-  border-radius: 5px;
-}
+
 .light-theme .cert-item h4 {
   color:#00e77f ;
 }
@@ -833,32 +831,52 @@ height: auto;
   row-gap:2rem;             /* espacio entre h2 y carrusel */
 }
 
-.certificaciones h2{font-size:2rem;margin-bottom:2rem;color:#ffffff}
+.certificaciones h2{
+  font-size:2rem;
+  margin-bottom:2rem;
+  color:#ffffff
+}
 
 /* Marco glass */
 .cert-carousel{
-  position:relative;width:90%;max-width:900px;overflow:hidden;
-  border-radius:20px;backdrop-filter:blur(8px);
+  position:relative;
+  width:90%;
+  max-width:1200px;
+  overflow:hidden;
+  border-radius:20px;
+  backdrop-filter:blur(8px);
   background:rgba(255,255,255,.05);
   box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 /* Botones flecha */
 .cert-btn{
-  position:absolute;top:50%;transform:translateY(-50%);
-  width:42px;height:42px;border:none;border-radius:50%;
-  font-size:1.4rem;color:#fff;background:rgba(255,255,255,.25);
-  backdrop-filter:blur(6px);cursor:pointer;z-index:2;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:none;
+  border-radius:50%;
+  font-size:1.4rem;
+  color:#fff;
+  background:rgba(255,255,255,.25);
+  backdrop-filter:blur(6px);
+  cursor:pointer;
+  z-index:2;
   transition:background .3s;
 }
-.cert-btn:hover{background:rgba(255,255,255,.5)}
+.cert-btn:hover{background:#00e77f}
 .cert-btn.prev{left:10px}
 .cert-btn.next{right:10px}
 
 /* Pista deslizante */
 .cert-track{
-  display:flex;gap:1.5rem;padding:2rem 2.5rem;
-  overflow-x:auto;scroll-behavior:smooth;
+  display:flex;
+  gap:1.5rem;
+  padding:2rem 2.5rem;
+  overflow-x:auto;
+  scroll-behavior:smooth;
   scroll-snap-type:x mandatory;
 }
 .cert-track::-webkit-scrollbar{display:none}
@@ -866,28 +884,44 @@ height: auto;
 
 /* Tarjetas */
 .cert-item{
-  flex:0 0 250px;scroll-snap-align:center;
+  flex:0 0 250px;
+  scroll-snap-align:center;
   background:rgba(255,255,255,.25);
-  backdrop-filter:blur(10px);
+  backdrop-filter:
+  blur(10px);
   border:1px solid rgba(255,255,255,.35);
-  border-radius:16px;padding:1.5rem;text-align:center;
+  border-radius:16px;
+  padding:1.5rem;
+  text-align:center;
   box-shadow:0 8px 20px rgba(0,0,0,.15);
   transition:transform .4s,box-shadow .4s;
 }
 .cert-item:hover{
   transform:translateY(-8px) scale(1.03);
-  box-shadow:0 12px 25px rgba(255, 255, 255, 0.25);
+  box-shadow:0 12px 25px rgba(18, 225, 94, 0.25);
 }
-.cert-item img{width:100px;margin-bottom:1rem;border-radius:8px; cursor:pointer}
-.cert-item h4{margin:.5rem 0;color:#fff}
-.cert-item p{font-size:.9rem;color:#e0e0e0}
+.cert-item img{
+  width:100px;
+  margin-bottom:1rem;
+  border-radius:8px; 
+  cursor:pointer
+}
+.cert-item h4{
+  margin:.5rem 0;
+  color:#fff
+}
+.cert-item p{
+  font-size:.9rem;
+  color:#e0e0e0
+}
 
 .cert-item img:hover {
   
-  transform:translateY(50px) scale(2.4);
-  box-shadow:0 12px 25px rgba(18, 14, 14, 0.25);
-  height: 100px;
-  border-radius: 10px;
+  transform:translateY(45px) scale(2.2);
+  box-shadow:2px 3px 9px 2px rgba(0, 0, 0, 0.25);
+  height: auto;
+  width: 110px;
+  border-radius: 4px;
 }
 
 /* Responsive: en móviles sigue el swipe táctil */
