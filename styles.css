@@ -92,6 +92,11 @@ color: #080808;
   color: #000000;
   margin-bottom: 1.5rem;
 }
+
+.light-theme .cert-carousel {
+   box-shadow:0 15px 40px rgba(77, 78, 85, 0.25);
+}
+
 .light-theme .cert-item {
   background-color: #020c23;
   border-color: #babcc9;
@@ -162,12 +167,20 @@ color: #080808;
   margin-bottom: 1.5rem;
 }
 
+.dark-theme .cert-carousel {
+   box-shadow: 0px 5px 9px rgba(8, 122, 35, 0.914);
+}
 
 .dark-theme .cert-item {
   background-color: #1d2540;
   border-color: #148c1c;
   color: #ffffff;
 }
+
+.dark-theme .cert-item:hover {
+ box-shadow:0 12px 25px rgba(7, 164, 67, 0.25);
+}
+
 .dark-theme .cert-item h4 {
   color: #00e77f;
 }
@@ -840,17 +853,19 @@ height: auto;
 /* Marco glass */
 .cert-carousel{
   position:relative;
+  align-content: center;
   width:90%;
+  height: 300px;
   max-width:1200px;
   overflow:hidden;
   border-radius:20px;
   backdrop-filter:blur(8px);
   background:rgba(255,255,255,.05);
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
+ 
 }
 
 /* Botones flecha */
-.cert-btn{
+.cert-btn {
   position:absolute;
   top:50%;
   transform:translateY(-50%);
@@ -876,6 +891,7 @@ height: auto;
   gap:1.5rem;
   padding:2rem 2.5rem;
   overflow-x:auto;
+  align-items: flex-end;
   scroll-behavior:smooth;
   scroll-snap-type:x mandatory;
 }
@@ -896,10 +912,11 @@ height: auto;
   box-shadow:0 8px 20px rgba(0,0,0,.15);
   transition:transform .4s,box-shadow .4s;
 }
+
 .cert-item:hover{
   transform:translateY(-8px) scale(1.03);
-  box-shadow:0 12px 25px rgba(18, 225, 94, 0.25);
 }
+
 .cert-item img{
   width:100px;
   margin-bottom:1rem;
