@@ -99,9 +99,14 @@ color: #080808;
 
 .light-theme .cert-item {
   background-color: #020c23;
-  border-color: #babcc9;
+  border-color: #000000;
   color: #94d7ab;
 }
+
+.light-theme .cert-item:hover {
+ box-shadow:0 10px 20px rgba(32, 32, 34, 0.926);
+}
+
 
 .light-theme .cert-item h4 {
   color:#00e77f ;
@@ -233,7 +238,6 @@ color: #080808;
 }
 
 .nav-list a {
-    border-color: 3px rgb(224, 224, 224);
   color: #fff;
   text-decoration: none;
   transition: color 0.3s; /* Transición de color suave */
@@ -281,16 +285,15 @@ color: #080808;
   .nav-list {
     /* layout */
     position: fixed;
-    top: 80px;          /* debajo del header */
-    right: -300px;         /* fuera de pantalla por defecto */
+    top: 80px;          /* debajo del header */        /* fuera de pantalla por defecto */
     flex-direction: column;
     gap: 1.5rem;
-    padding: 5rem 1.5rem 2rem;
+    padding: 5rem 3.5rem 2rem;
 
     /* estilo visual */
     width: 300px;
     height: 100vh;
-    background: #202057;
+    background: #020c23;
     box-shadow: -4px 0 10px rgba(0,0,0,0.45);
 
     /* animación */
@@ -298,7 +301,7 @@ color: #080808;
     opacity: 0;
 
     /* capas */
-    z-index: 1002;         /* encima del overlay (1000) */
+    z-index: 1003;         /* encima del overlay (1000) */
   }
 
   /* lista cuando está abierta */
@@ -878,12 +881,12 @@ height: auto;
   background:rgba(255,255,255,.25);
   backdrop-filter:blur(6px);
   cursor:pointer;
-  z-index:2;
+  z-index:10;
   transition:background .3s;
 }
 .cert-btn:hover{background:#00e77f}
-.cert-btn.prev{left:10px}
-.cert-btn.next{right:10px}
+.cert-btn.prev{left:-10px}
+.cert-btn.next{right:-10px}
 
 /* Pista deslizante */
 .cert-track{
@@ -945,6 +948,8 @@ height: auto;
 @media(max-width:768px){
   .cert-track{padding:1.5rem 1.5rem}
   .cert-item{flex:0 0 220px}
+  .cert-track::-webkit-scrollbar{display:none}
+.cert-track{scrollbar-width:none}
 }
 
 
