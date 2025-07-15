@@ -7,6 +7,7 @@
 
 html, body {
   scroll-behavior: smooth; /* Desplazamiento suave al navegar con anclas */
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
 }
 
 /* =============== TEMA AUTOMÁTICO =============== */
@@ -285,7 +286,8 @@ color: #080808;
   .nav-list {
     /* layout */
     position: fixed;
-    top: 80px;          /* debajo del header */        /* fuera de pantalla por defecto */
+    top: 80px;          /* debajo del header */   
+    right: -300px; /* fuera de la pantalla */
     flex-direction: column;
     gap: 1.5rem;
     padding: 5rem 3.5rem 2rem;
@@ -299,7 +301,7 @@ color: #080808;
     /* animación */
     transition: right 0.3s ease, opacity 0.3s ease;
     opacity: 0;
-
+    pointer-events: none; /* 🔒 Desactiva clics */   
     /* capas */
     z-index: 1003;         /* encima del overlay (1000) */
   }
@@ -308,6 +310,7 @@ color: #080808;
   .nav-list.active {
     right: 0;              /* se desliza dentro */
     opacity: 1;
+    pointer-events: auto; /*  Habilita clics */
   }
 
   /* items con fade-in secuenciado */
@@ -572,9 +575,10 @@ height: auto;
 
 /* CONTENEDOR GENERAL DEL SEMICÍRCULO */
 .circle-container {
-  flex: 0 0 250px;
-  max-width: 250px;
-  height: 250px;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -584,12 +588,15 @@ height: auto;
 
 /* CÍRCULO GIRATORIO */
 .orbit-wrapper {
+  aspect-ratio: 1/1; /* Mantiene la proporción de aspecto cuadrada */
   animation: spinOrbit 50s linear infinite;
   height: 200px;
-  position:absolute;
-  width: 200px;
+  position:relative;
+  width: 100%;
+  max-width: 220px;
   bottom: 0px;
   align-items: center;
+  overflow: visible;
 }
 
 @keyframes spinOrbit {
@@ -625,11 +632,11 @@ height: auto;
 }
 
 /* POSICIONES DE LOS ÍCONOS */
-  .item1 { transform: rotate(225deg) translateX(120px) rotate(-225deg); }
-  .item2 { transform: rotate(157.5deg) translateX(120px) rotate(-157.5deg); }
-  .item3 { transform: rotate(90deg) translateX(120px) rotate(-90deg); }
-  .item4 { transform: rotate(22.5deg) translateX(120px) rotate(-22.5deg); }
-  .item5 { transform: rotate(-45deg) translateX(120px) rotate(45deg); }
+.item1 { transform: rotate(225deg) translateX(100px) rotate(-225deg); }
+.item2 { transform: rotate(157.5deg) translateX(100px) rotate(-157.5deg); }
+.item3 { transform: rotate(90deg) translateX(100px) rotate(-90deg); }
+.item4 { transform: rotate(22.5deg) translateX(100px) rotate(-22.5deg); }
+.item5 { transform: rotate(-45deg) translateX(100px) rotate(45deg); }
 
 
 /* ========= MEDIA QUERIES: TABLET ========= */
@@ -682,6 +689,15 @@ height: auto;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+  }
+
+  .orbit-wrapper {
+    max-width: 180px;
+  }
+
+  .orbit-item {
+    width: 40px;
+    height: 40px;
   }
 
   .circle-container {
