@@ -31,9 +31,11 @@
     
     <!-- Imagen a la izquierda -->
     <div class="hero-img">
-      <img src="assets/perfil.jpeg" alt="Alex Bello Foto">
+      <div class="hero-img-wrapper">
+        <img src="assets/perfil.jpeg" alt="Alex Bello Foto">
+        <span class="border-pulse"></span> <!-- este es el pulso -->
+      </div>
     </div>
-
     <!-- Texto y botones a la derecha -->
     <div class="hero-text">
       <h2 class="from-left">Hola, soy <span>Desarrollador de Software </span>y Diseñador UI/UX<span></span></h2>
@@ -235,5 +237,25 @@
   </footer>
 
   <script src="script.js"></script>
+
+  
+<!-- Botón flotante de WhatsApp -->
+<div class="whatsapp-button">
+  <button id="toggleChat">
+    <img src="assets/whatsapp-icono.png" alt="WhatsApp">
+    <span class="tooltip">WhatsApp</span>
+  </button>
+
+  <!-- Caja de mensaje -->
+  <div class="whatsapp-chat" id="chatBox">
+    <textarea id="whatsappMessage" placeholder="Escribe tu mensaje..."></textarea>
+    <a id="sendWhatsApp" target="_blank">Enviar</a>
+  </div>
+</div>
+
+
+
+<script src="whatsapp.js"></script>
+
 </body>
 </html>

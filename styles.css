@@ -182,7 +182,7 @@ color: #080808;
 }
 
 .dark-theme .cert-carousel {
-   box-shadow: 0px 5px 9px rgba(8, 122, 35, 0.914);
+   box-shadow: 0px 2px 9px rgba(20, 87, 38, 0.914);
 }
 
 .dark-theme .cert-item {
@@ -381,46 +381,80 @@ color: #080808;
 }
 
 .hero-img {
-  position: relative;
+  flex: 1 1 300px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1 1 300px;
 }
 
-.hero-img::before {
-  content: "";
-  position: absolute;
+/* contenedor con animación de levitación */
+.hero-img-wrapper {
+  position: relative;
   width: 260px;
   height: 340px;
-  border-radius: 3rem;
-  border: 1px solid transparent;
-  box-sizing: border-box;
+  animation: levitate 4s ease-in-out infinite;
   z-index: 1;
-  animation: borderTracer 5s linear infinite;
-  background: linear-gradient(90deg, transparent 30%, #0bae1e, transparent 70%);
-  background-size: 300% 100%;
-  background-repeat: no-repeat;
-  -webkit-mask: 
-    linear-gradient(#2a2d2a 0 0) content-box, 
-    linear-gradient(#292e2a2e 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  padding: 2px;
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
-.hero-img img {
-  max-width: 250px;
-  width: 100%;
-  height: auto;
+/* Borde base */
+.hero-img-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  box-shadow: 0 0 10px #000000;
+}
+
+/* Pulso que recorre el borde */
+.border-pulse {
+  position: absolute;
+  inset: 0;
   border-radius: 3rem;
-  
-  position: relative;
   z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #03c55e 50%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  animation: pulseBorderFlow 5s linear infinite;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  padding: 4px;
+  box-sizing: border-box;
 }
 
-/* Animación que desplaza el gradiente para simular movimiento */
-@keyframes borderTracer {
+
+/* Imagen normal, sin animación directa */
+.hero-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Levitación suave hacia arriba y abajo */
+@keyframes levitate {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+/* Movimiento del gradiente */
+@keyframes pulseBorderFlow {
   0% {
     background-position: 200% 0;
   }
@@ -1148,6 +1182,110 @@ color: #080808;
   text-align: center;
   padding: 1rem 0;
 }
+
+
+/* ============ BOTÓN FLOTANTE DE WHATSAPP ============ */
+.whatsapp-button {
+  position: fixed;
+  bottom: 50px;
+  right: 6px;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+/* Botón circular con ícono */
+.whatsapp-button button {
+  background-color: #25d366;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+  position: relative; /* Necesario para posicionar el tooltip */
+}
+
+/* Cambia color al pasar el mouse */
+.whatsapp-button button:hover {
+  background-color: #1ebe5d;
+}
+
+/* Ícono dentro del botón */
+.whatsapp-button button img {
+  width: 32px;
+  height: 32px;
+}
+
+/* Tooltip (mensaje "WhatsApp") */
+.tooltip {
+  position: absolute;
+  right: 70px;
+  background-color: #25d366;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* Mostrar el tooltip al hacer hover */
+.whatsapp-button button:hover .tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Caja de chat desplegable */
+.whatsapp-chat {
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #ffffff;
+  border: 2px solid #25d366;
+  border-radius: 10px;
+  padding: 0.7rem;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Área de texto para mensaje */
+.whatsapp-chat textarea {
+  width: 100%;
+  resize: none;
+  height: 60px;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+/* Botón para enviar mensaje */
+.whatsapp-chat a {
+  text-align: center;
+  background-color: #25d366;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.whatsapp-chat a:hover {
+  background-color: #1ebe5d;
+}
+
 
 /* =============== ANIMACIONES GENERALES =============== */
 .reveal {
