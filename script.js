@@ -104,20 +104,40 @@ function setupSkillAnimations() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const skill = entry.target;
-        const percentage = skill.getAttribute('data-percentage');
+        const percentage = parseInt(skill.getAttribute('data-percentage'), 10);
         const progress = skill.querySelector('.progress');
-        const offset = 314 - (314 * percentage / 100);
-        progress.style.strokeDashoffset = offset;
+        const percentageText = skill.querySelector('.percentage-text');
 
-        // observer.unobserve(skill); // Evita que se repita
+        const radius = 50;
+        const circumference = 2 * Math.PI * radius;
+        const offset = circumference - (circumference * percentage / 100);
 
-        // Usa esto si quieres repetir animación:
+        // Reinicio visual (permite repetición visual si quieres)
         progress.style.transition = 'none';
-        progress.style.strokeDashoffset = 314;
+        progress.style.strokeDashoffset = circumference;
+        percentageText.textContent = '0%';
+
         setTimeout(() => {
+          // Activa la transición del trazo
           progress.style.transition = 'stroke-dashoffset 2s ease-out';
           progress.style.strokeDashoffset = offset;
-        }, 100);
+
+          // Animación del número
+          let count = 0;
+          const duration = 2000;
+          const interval = 20;
+          const steps = duration / interval;
+          const increment = percentage / steps;
+
+          const counter = setInterval(() => {
+            count += increment;
+            if (count >= percentage) {
+              count = percentage;
+              clearInterval(counter);
+            }
+            percentageText.textContent = `${Math.round(count)}%`;
+          }, interval);
+        }, 100); // delay pequeño para sincronizar
       }
     });
   }, {
