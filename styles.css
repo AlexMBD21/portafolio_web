@@ -366,6 +366,8 @@ color: #080808;
   overflow: hidden; /* Oculta el desplazamiento horizontal */
   padding: 4rem 1rem;
   position: relative;
+  align-items: center;
+  height: 100vh;
   text-align: left;
   z-index: 1;
 }
@@ -385,6 +387,8 @@ color: #080808;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  position: relative;
 }
 
 /* contenedor con animación de levitación */
@@ -393,9 +397,9 @@ color: #080808;
   width: 260px;
   height: 340px;
   animation: levitate 4s ease-in-out infinite;
-  z-index: 1;
+  z-index: 10;
   border-radius: 2rem;
-  overflow: hidden;
+ 
 }
 
 /* Borde base */
@@ -417,7 +421,7 @@ color: #080808;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    #03c55e 50%,
+    #0da353 50%,
     transparent 100%
   );
   background-size: 300% 100%;
@@ -427,7 +431,7 @@ color: #080808;
     linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
-  padding: 4px;
+  padding: 3px;
   box-sizing: border-box;
 }
 
@@ -464,6 +468,39 @@ color: #080808;
 }
 
 
+.hero-shadow {
+  position: absolute;
+  bottom: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 35px;
+  background: radial-gradient(ellipse at center, rgba(43, 243, 123, 0.766), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: shadowlevitate 4s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(12px);
+}
+
+
+
+@keyframes shadowlevitate {
+  0%, 100% {
+    transform: translateX(-50%) scale(1);
+    opacity: 0.5;
+    filter: blur(8px);
+  }
+  50% {
+    transform: translateX(-50%) scaleX(1.3) scaleY(0.7);
+    opacity: 0.2;
+    filter: blur(14px);
+  }
+}
+
+
+
+/* Texto de la sección hero */
 .hero-text {
   flex: 1 1 400px;
 }
@@ -559,7 +596,31 @@ color: #080808;
 
 
 /* =============== RESPONSIVE HERO =============== */
-@media (max-width: 768px) {
+@media (max-width: 840px) {
+
+
+  .hero-img-wrapper {
+    width: 180px; /* más pequeña proporcionalmente */
+    height: 240px;
+  }
+
+  .hero-shadow {
+    width: 120px;
+    height: 25px;
+    bottom: -35px; /* ajusta para que siga justo debajo */
+  }
+
+  .border-pulse {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .hero-content {
     flex-direction: column;
     text-align: center;
@@ -1040,8 +1101,7 @@ color: #080808;
   width:100px;
   margin-bottom:1rem;
   border-radius:8px; 
-  cursor:pointer;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, width 0.5s ease;
+
 }
 
 .cert-item h4{
