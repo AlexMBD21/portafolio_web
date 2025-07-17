@@ -5,9 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portafolio | ALEX BELLO</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+
 <body>
+
   <div class="nav-overlay" id="nav-overlay"></div>
+
   <header class="header">
     <div class="container nav-container">
       <h1 class="logo"><a href="#inicio">ALEX BELLO</a></h1>
@@ -52,30 +56,48 @@
 
 
 
-  <!-- SOBRE MÍ -->
+<!-- SOBRE MÍ -->
 <section id="sobre-mi" class="about" aria-label="Sección Sobre mí">
   <div class="about-wrapper">
     
     <!-- Columna de texto -->
-    <article class="about-text from-left">
-      <h2>Sobre mí</h2>
-      <p>Soy un desarrollador web apasionado por la creación de experiencias interactivas y funcionales. Me encanta trabajar con tecnologías modernas como HTML, CSS, JavaScript, Angular y Firebase.</p>
-      <p>Actualmente estoy perfeccionando mis habilidades tanto en frontend como en la experiencia de usuario (UX/UI).</p>
+    <article class="about-text">
+      <div class="about-content">
+        <h2>Sobre mí</h2>
+        <p>
+          Soy un desarrollador web apasionado por la creación de interfaces atractivas y funcionales. Me especializo en HTML, CSS y JavaScript, con experiencia en frameworks modernos como React. Me encanta aprender constantemente nuevas tecnologías y enfrentar desafíos creativos. Además, tengo habilidades en diseño UI/UX .En donbde mi enfoque es construir soluciones accesibles, eficientes y visualmente impactantes.
+        </p>
+        <p>
+          Disfruto colaborar en equipo y mantenerme al día con las tendencias del desarrollo web. Siempre busco combinar la estética con el rendimiento en cada proyecto.
+        </p>
+      </div>
+      <!-- Botón "Leer más" solo visible en mobile -->
+      <button class="read-more-btn">Leer más</button>
+
+      <!-- Íconos sociales -->
+      <div class="social-icons">
+        <a href="https://github.com/AlexMBD21" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/alex-bello-doria"  target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:alexmiguelbellod@gmail.com" target="_blank"><i class="fab fa-google"></i></a>
+      </div>
     </article>
 
-    <!-- Columna del semicírculo -->
-    <aside class="circle-container" aria-hidden="true">
+    <!-- Círculo giratorio -->
+    <div class="circle-container">
       <div class="orbit-wrapper">
-        <div class="orbit-item item1"><img src="assets/html5.svg" alt="HTML5" /></div>
-        <div class="orbit-item item2"><img src="assets/css.svg" alt="CSS3" /></div>
-        <div class="orbit-item item3"><img src="assets/jss.svg" alt="JavaScript" /></div>
-        <div class="orbit-item item4"><img src="assets/angular.svg" alt="Angular" /></div>
-        <div class="orbit-item item5"><img src="assets/firebase.svg" alt="Firebase" /></div>
+        <div class="orbit-item item1"><img src="assets/angular.svg" alt="ANGULAR"></div>
+        <div class="orbit-item item2"><img src="assets/css.svg" alt="CSS"></div>
+        <div class="orbit-item item3"><img src="assets/jss.svg" alt="JAVASCRIPT"></div>
+        <div class="orbit-item item4"><img src="assets/firebase.svg" alt="FIREBASE"></div>
+        <div class="orbit-item item5"><img src="assets/html5.svg" alt="HTML5"></div>
       </div>
-    </aside>
+    </div>
 
   </div>
 </section>
+
+
+
 
 
 <!-- HABILIDADES -->
@@ -165,43 +187,62 @@
     </div>
   </section>
 
-  <!-- ========== CERTIFICACIONES ========== -->
-   <section id="certificaciones" class="certificaciones reveal">
-    <h2 class="from-up">Certificaciones</h2>
+ 
+<!-- ========== CERTIFICACIONES ========== -->
+<section id="certificaciones" class="certificaciones reveal">
+  <h2 class="from-up">Certificaciones</h2>
 
-    <div class="cert-carousel">                 <!-- Marco glass -->
-      <button class="cert-btn prev" aria-label="Anterior">❮</button>
+  <div class="cert-carousel">
+    <button class="cert-btn prev" aria-label="Anterior">❮</button>
 
-       <div class="cert-track">                  <!-- Pista deslizante -->
-      <!-- Tarjetas -->
+    <div class="cert-track">
+      <!-- Tarjeta 1 -->
       <div class="cert-item">
-          <div class="cert-image-container">
-           <img src="assets/certifi-html_css.png" alt="Certificado html_css">
-          </div>
-
+        <div class="cert-image-container">
+          <img src="assets/certifi-html_css.png" alt="Certificado html_css">
+          <button class="cert-view-btn" onclick="window.open('assets/certifi-html_css.png', '_blank')">
+            <svg width="16" height="16" fill="#fff" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zM6.5 12a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+            </svg>
+          </button>
+        </div>
         <h4>HTML y CSS</h4>
         <p>Curso definitivo</p>
       </div>
 
+      <!-- Tarjeta 2 -->
       <div class="cert-item">
-       <img src="assets/certifi-responsive.png" alt="Certificado responsive">
+        <div class="cert-image-container">
+          <img src="assets/certifi-responsive.png" alt="Certificado responsive">
+          <button class="cert-view-btn" onclick="window.open('assets/certifi-responsive.png', '_blank')">
+            <svg width="16" height="16" fill="#fff" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zM6.5 12a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+            </svg>
+          </button>
+        </div>
         <h4>Responsive design</h4>
-        <p>Maquetacion mobile first.</p>
+        <p>Maquetación mobile first.</p>
       </div>
 
+      <!-- Tarjeta 3 -->
       <div class="cert-item">
-        <img src="assets/certifi-programacion.png" alt="Certificado programacion">
-        <h4>Programacion</h4>
-        <p>Primeros pasos </p>
+        <div class="cert-image-container">
+          <img src="assets/certifi-programacion.png" alt="Certificado programacion">
+          <button class="cert-view-btn" onclick="window.open('assets/certifi-programacion.png', '_blank')">
+            <svg width="16" height="16" fill="#fff" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.415l-3.85-3.85zM6.5 12a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11z"/>
+            </svg>
+          </button>
+        </div>
+        <h4>Programación</h4>
+        <p>Primeros pasos</p>
       </div>
     </div>
-      <!-- duplica .cert-item para más tarjetas -->  
+
     <button class="cert-btn next" aria-label="Siguiente">❯</button>
   </div>
-   
-
-  </div>
 </section>
+
 
 
 
@@ -235,8 +276,7 @@
   </footer>
 
   <script src="script.js"></script>
-
-  
+ 
 <!-- Botón flotante de WhatsApp -->
 <div class="whatsapp-button">
   <button id="toggleChat">

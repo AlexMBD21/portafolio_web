@@ -86,6 +86,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+
+// ----------- Comportamiento del botón "Leer más" en la sección "Sobre mí" -----------
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.querySelector(".read-more-btn");
+  const content = document.querySelector(".about-content");
+
+  function toggleMobileBehavior() {
+    if (window.innerWidth <= 700) {
+      btn.style.display = "inline-block";
+      content.classList.remove("expanded");
+      content.style.maxHeight = "400px";
+    } else {
+      btn.style.display = "none";
+      content.classList.add("expanded");
+      content.style.maxHeight = "none";
+    }
+  }
+
+  toggleMobileBehavior();
+  window.addEventListener("resize", toggleMobileBehavior);
+
+  btn.addEventListener("click", function () {
+    const isExpanded = content.classList.toggle("expanded");
+    btn.textContent = isExpanded ? "Leer menos" : "Leer más";
+  });
+});
+
+
 // --- Carrusel de Certificaciones ---
 const track = document.querySelector('.cert-track');
 const prev  = document.querySelector('.cert-btn.prev');
@@ -95,6 +123,45 @@ if (track && prev && next){
   next.onclick = () => track.scrollBy({ left:  cardWidth, behavior:'smooth' });
   prev.onclick = () => track.scrollBy({ left: -cardWidth, behavior:'smooth' });
 }
+
+// ----------- Comportamiento de las certificaciones al hacer clic -----------
+  function setupCertClickToggle() {
+    const certItems = document.querySelectorAll('.cert-item');
+    let lastTouched = null;
+
+    certItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Evita activar si el clic fue en el botón de zoom
+        if (e.target.closest('.cert-view-btn')) return;
+
+        // Si tocaste el mismo ítem otra vez, desactíalo
+        if (lastTouched === item) {
+          item.classList.remove('active');
+          lastTouched = null;
+          return;
+        }
+
+        // Desactiva todos los demás
+        certItems.forEach(i => i.classList.remove('active'));
+
+        // Activa este
+        item.classList.add('active');
+        lastTouched = item;
+      });
+    });
+
+    // Clic fuera de los items, desactiva todos
+    document.addEventListener('click', () => {
+      certItems.forEach(item => item.classList.remove('active'));
+      lastTouched = null;
+    });
+  }
+
+  // Ejecutar cuando cargue el DOM
+  document.addEventListener('DOMContentLoaded', setupCertClickToggle);
+
 
 // ----------- Animaciones de habilidades -----------
 function setupSkillAnimations() {
@@ -153,6 +220,7 @@ window.addEventListener('load', () => {
   setupRevealAnimations();
   applyStoredTheme();
   setupSkillAnimations();
+  setupCertClickToggle();
 });
 
 
