@@ -222,6 +222,7 @@ color: #080808;
 
 
 
+
 /* =============== NAVEGACIÓN =============== */
 .header {
   padding: 1rem 0;
@@ -229,24 +230,158 @@ color: #080808;
   top: 0;
   z-index: 1001;
   height: 80px;
-  min-height: 80;
+  min-height: 80px;
   align-items: center;
   width: 100%;
+  background-color: #020c23;
 }
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* Botón Switch Tema */
+.theme-switch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 47px;
+  z-index: 10;
+  margin-left: auto; /* Empuja el botón hacia el borde derecho */
+}
+
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #0f172a;
+  border: 2px solid #000000;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #e6e4dc;
+  z-index: 1;
+}
+
+.slider::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  top: 50%;
+  left: 7px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px #ffffffcc;
+  z-index: 2;
+}
+
+.theme-switch input:checked + .slider {
+  box-shadow: 0 0 15px #4ade80;
+  border-color: #22c55e;
+}
+
+.theme-switch input:checked + .slider::after {
+  transform: translate(50px, -50%);
+  background-color: #4ade80;
+  box-shadow: 0 0 8px #4ade80cc;
+}
+
+.icon {
+  margin: 2px 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-55%);
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.sun-icon svg {
+  fill: #000000;
+  left: 6px; /* Antes era 10px */
+}
+
+.moon-icon svg {
+  fill: #ffffff;
+   right: 6px; /* Antes era 10px */
+}
+
+.theme-switch input:not(:checked) + .slider .sun-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #ffffffaa);
+}
+
+.theme-switch input:checked + .slider .moon-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #38bdf8aa);
+}
+
+.sun-icon {
+  left: 10px;
+}
+.moon-icon {
+  right: 10px;
+}
+
+.sun-icon svg,
+.moon-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.theme-switch input:not(:checked) + .slider .sun-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #ffffffaa);
+}
+.theme-switch input:checked + .slider .moon-icon {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #38bdf8aa);
+}
+
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  height: 100%;
-  position: relative;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  padding: 0 1rem; /* Antes: padding: 0 1rem; */
+  justify-content: space-between;
 }
 
+
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+
 .logo a {
+  white-space: nowrap;
   font-size: 1.7rem;
   font-weight: bold;
   text-decoration: none;
   color: inherit;
+  flex-shrink: 0; /* No se encoge */
 }
 
 .nav-list {
@@ -297,6 +432,7 @@ color: #080808;
   width: 100%;
 }
 
+/* Botón hamburguesa */
 .hamburger {
   display: none;
   background: none;
@@ -331,17 +467,40 @@ color: #080808;
   opacity: 1;
 }
 
-/* ============== RESPONSIVE MENÚ HAMBURGUESA ===================== */
-@media (max-width: 768px) {
+/* =================== RESPONSIVE =================== */
+@media (max-width: 920px) {
+  
+  .header-buttons {
+    margin-left: auto;
+  }
+  
+  .theme-switch {
+    width: 85px;
+    height: 38px;
+    margin-right: 0.5rem;
+  }
 
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1001;
-    background-color: #020c23;
-    padding: 1rem 2rem;
+  .slider::after {
+    width: 24px;
+    height: 24px;
+    left: 5px;
+  }
+
+  .theme-switch input:checked + .slider::after {
+    transform: translate(46px, -50%);
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sun-icon {
+    left: 8px;
+  }
+
+  .moon-icon {
+    right: 8px;
   }
 
   .nav-list {
@@ -388,6 +547,7 @@ color: #080808;
     display: block;
   }
 }
+
 
 
 /* =============== HERO SECTION =============== */
@@ -443,7 +603,6 @@ color: #080808;
   position: absolute;
   inset: 0;
   z-index: 0;
-  box-shadow: 0 0 10px #000000;
 }
 
 /* Pulso que recorre el borde */
@@ -717,10 +876,12 @@ color: #080808;
   max-height: 400px;
   overflow: hidden;
   transition: max-height 0.5s ease;
+  max-height: 400px; /* solo en mobile, cambiará con JS */
 }
 .about-content.expanded {
   max-height: 2000px; /* valor alto para expandir todo el contenido */
   overflow: visible;
+  max-height: none;
 }
 
 .read-more {
@@ -736,8 +897,9 @@ color: #080808;
   font-weight: bold;
   cursor: pointer;
   font-size: 1rem;
-  padding: 0;
+  padding: 0.5rem 1rem;
   display: none;
+  border-radius: 20px;
 }
 
 .read-more-btn:hover {
@@ -835,18 +997,25 @@ color: #080808;
     z-index: 1;
     position: relative;
     padding: 1.5rem;
-    height: auto; /* ajusta según necesidad */
-    max-height: 480px;
-    overflow-y: auto; /* añade scroll si se excede */
+    height: auto;
+    max-height: none; /* Quitar límite */
+    overflow: visible; /* Evitar scroll interno */
   }
 
-   .about-content {
-    max-height: 400px; /* coincide con tu JS */
+  .about-content {
+    max-height: 400px;
+    overflow: hidden;
     position: relative;
+    transition: max-height 0.5s ease;
   }
 
- .read-more-btn {
-    display: inline-block;
+  .about-content.expanded {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .read-more-btn {
+    display: none; /* Por defecto oculto */
     margin-top: 1rem;
     background-color: #020c23;
     color: white;
@@ -857,8 +1026,16 @@ color: #080808;
     font-size: 1rem;
   }
 
-.read-more-btn:hover {
+  .read-more-btn.visible {
+    display: inline-block;
+  }
+
+  .read-more-btn:hover {
     background-color: #017a36;
+  }
+
+  .read-more-btn.visible {
+    display: inline-block;
   }
 
   .hidden {

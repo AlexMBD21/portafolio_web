@@ -12,22 +12,46 @@
 
   <div class="nav-overlay" id="nav-overlay"></div>
 
-  <header class="header">
-    <div class="container nav-container">
-      <h1 class="logo"><a href="#inicio">ALEX BELLO</a></h1>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li><a href="#sobre-mi">Sobre mí</a></li>
-          <li><a href="#habilidades">Habilidades</a></li>
-          <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#certificaciones">Certificaciones</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-      </nav>
-      <button id="theme-toggle" class="theme-toggle">🌙</button>
+<header class="header">
+  <div class="container nav-container">
+    <h1 class="logo"><a href="#inicio">ALEX BELLO</a></h1>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#certificaciones">Certificaciones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- Grupo botones tema + hamburguesa -->
+    <div class="header-buttons">
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider">
+          <span class="icon sun-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 4V2M12 22V20M4.22 4.22L2.81 2.81M21.19 21.19L19.78 19.78M2 12H4M20 12H22M4.22 19.78L2.81 21.19M19.78 4.22L21.19 2.81M12 16A4 4 0 1 0 12 8a4 4 0 0 0 0 8z"
+                stroke="black" stroke-width="2" />
+            </svg>
+          </span>
+          <span class="icon moon-icon">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M21 12.79A9 9 0 0 1 12.21 3 7 7 0 1 0 21 12.79z"
+                stroke="white" stroke-width="2" />
+            </svg>
+          </span>
+        </span>
+      </label>
+
       <button class="hamburger" id="hamburger"></button>
     </div>
-  </header>
+  </div>
+</header>
+
+
 
 <!-- HERO -->
 <section id="inicio" class="hero reveal">
@@ -36,7 +60,7 @@
     <!-- Imagen a la izquierda -->
     <div class="hero-img">
       <div class="hero-img-wrapper">
-        <img src="assets/perfil.jpeg" alt="Alex Bello Foto">
+        <img src="assets/perfil.webp" alt="Alex Bello Foto">
         <span class="border-pulse"></span> <!-- este es el pulso -->
         <div class="hero-shadow"></div>
       </div>
@@ -250,7 +274,7 @@
 <section id="contacto" class="contact reveal">
   <div class="container contact-container">
     <div class="contact-info from-left">
-      <img src="assets/perfil.jpeg" alt="Logo" class="contact-logo">
+      <img src="assets/perfil.webp" alt="Logo" class="contact-logo">
       <p class="contact-text">
         ¿Tienes un proyecto en mente? <br />
         Estoy listo para ayudarte. Escríbeme y lo hablamos.

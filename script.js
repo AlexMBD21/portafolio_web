@@ -14,21 +14,26 @@ function setupRevealAnimations() {
 
 
 // ----------- Cambio de tema -----------
-const toggleBtn = document.getElementById('theme-toggle');
+const toggleInput = document.getElementById("theme-toggle");
+
 function applyStoredTheme() {
-  const storedTheme = localStorage.getItem('theme') || 'light';
-  document.body.classList.remove('light-theme', 'dark-theme');
+  const storedTheme = localStorage.getItem("theme") || "light";
+  document.body.classList.remove("light-theme", "dark-theme");
   document.body.classList.add(`${storedTheme}-theme`);
-  toggleBtn.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+  toggleInput.checked = storedTheme === "dark";
 }
-toggleBtn.addEventListener('click', () => {
-  const isDark = document.body.classList.contains('dark-theme');
-  const newTheme = isDark ? 'light' : 'dark';
-  document.body.classList.toggle('light-theme', newTheme === 'light');
-  document.body.classList.toggle('dark-theme', newTheme === 'dark');
-  localStorage.setItem('theme', newTheme);
-  toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+
+toggleInput.addEventListener("change", () => {
+  const isDark = toggleInput.checked;
+  const newTheme = isDark ? "dark" : "light";
+  document.body.classList.remove("light-theme", "dark-theme");
+  document.body.classList.add(`${newTheme}-theme`);
+  localStorage.setItem("theme", newTheme);
 });
+
+// Ejecutar al cargar
+document.addEventListener("DOMContentLoaded", applyStoredTheme);
+
 
 
 
@@ -92,11 +97,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const btn = document.querySelector(".read-more-btn");
   const content = document.querySelector(".about-content");
 
-  function toggleMobileBehavior() {
+  function checkOverflow() {
+    // Solo se aplica en pantallas móviles
     if (window.innerWidth <= 700) {
-      btn.style.display = "inline-block";
-      content.classList.remove("expanded");
-      content.style.maxHeight = "400px";
+      const isOverflowing = content.scrollHeight > 400;
+      btn.style.display = isOverflowing ? "inline-block" : "none";
+
+      // Colapsa el contenido inicialmente
+      if (!content.classList.contains("expanded")) {
+        content.style.maxHeight = "400px";
+      }
     } else {
       btn.style.display = "none";
       content.classList.add("expanded");
@@ -104,14 +114,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  toggleMobileBehavior();
-  window.addEventListener("resize", toggleMobileBehavior);
-
   btn.addEventListener("click", function () {
     const isExpanded = content.classList.toggle("expanded");
+    content.style.maxHeight = isExpanded ? "none" : "400px";
     btn.textContent = isExpanded ? "Leer menos" : "Leer más";
   });
+
+  window.addEventListener("resize", checkOverflow);
+  checkOverflow(); // ejecuta al cargar
 });
+
 
 
 // --- Carrusel de Certificaciones ---
