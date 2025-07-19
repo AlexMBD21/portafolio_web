@@ -240,46 +240,6 @@ function setupSkillAnimations() {
 
 
 
-
-
-// ----------- Comportamiento de las tarjetas de proyectos -----------
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".project-card");
-
-  document.querySelectorAll('.menu-icon').forEach(icon => {
-    icon.addEventListener('click', e => {
-      e.stopPropagation();
-
-      const currentCard = icon.closest('.project-card');
-
-      // Cierra todas las demás
-      cards.forEach(card => {
-        if (card !== currentCard) {
-          card.classList.remove('show-button');
-        }
-      });
-
-      // Alterna esta
-      currentCard.classList.toggle('show-button');
-    });
-  });
-
-  // Cierra al hacer clic fuera
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.project-card')) {
-      cards.forEach(card => card.classList.remove('show-button'));
-    }
-  });
-});
-
-
-
-
-
-
-
-
-
 // ----------- Inicialización al cargar -----------
 window.addEventListener('load', () => {
   setupRevealAnimations();
