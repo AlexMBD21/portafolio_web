@@ -72,6 +72,9 @@ navList.querySelectorAll('a').forEach(link =>
   link.addEventListener('click', closeMenu)
 );
 
+
+
+
 // ----------- Ajuste de Scroll para evitar que el header tape las secciones -----------
 
 const headerOffset = document.querySelector('.header')?.offsetHeight || 80;
@@ -90,6 +93,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+
+
 
 
 // ----------- Comportamiento del botón "Leer más" en la sección "Sobre mí" -----------
@@ -123,6 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", checkOverflow);
   checkOverflow(); // ejecuta al cargar
 });
+
+
 
 
 
@@ -175,6 +183,9 @@ if (track && prev && next){
   document.addEventListener('DOMContentLoaded', setupCertClickToggle);
 
 
+
+
+
 // ----------- Animaciones de habilidades -----------
 function setupSkillAnimations() {
   const skills = document.querySelectorAll('.skill');
@@ -225,6 +236,48 @@ function setupSkillAnimations() {
 
   skills.forEach(skill => observer.observe(skill));
 }
+
+
+
+
+
+
+// ----------- Comportamiento de las tarjetas de proyectos -----------
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".project-card");
+
+  document.querySelectorAll('.menu-icon').forEach(icon => {
+    icon.addEventListener('click', e => {
+      e.stopPropagation();
+
+      const currentCard = icon.closest('.project-card');
+
+      // Cierra todas las demás
+      cards.forEach(card => {
+        if (card !== currentCard) {
+          card.classList.remove('show-button');
+        }
+      });
+
+      // Alterna esta
+      currentCard.classList.toggle('show-button');
+    });
+  });
+
+  // Cierra al hacer clic fuera
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.project-card')) {
+      cards.forEach(card => card.classList.remove('show-button'));
+    }
+  });
+});
+
+
+
+
+
+
+
 
 
 // ----------- Inicialización al cargar -----------
