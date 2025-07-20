@@ -1676,6 +1676,7 @@ color: #080808;
    transition-delay: 0.4s;
 }
 
+
 /* Responsive: en móviles sigue el swipe táctil */
 @media (max-width: 768px) {
   .cert-track {
