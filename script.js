@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", applyStoredTheme);
 
 
 // ----------- Menú Hamburguesa -----------
+// ----------- Menú Hamburguesa -----------
 const hamburger  = document.getElementById('hamburger');
 const navList    = document.querySelector('.nav-list');
 const navOverlay = document.getElementById('nav-overlay');
@@ -55,19 +56,24 @@ function toggleMenu() {
 }
 
 function closeMenu() {
-  navList.classList.remove('active');
-  navOverlay.classList.remove('active');
-  hamburger.classList.remove('active');
+  // Elimina las animaciones primero
   navList.querySelectorAll('li').forEach(item => {
     item.classList.remove('menu-fade-in');
     item.style.transitionDelay = '0s';
   });
+
+  // Retrasar el cierre para que se vea la animación de salida
+  setTimeout(() => {
+    navList.classList.remove('active');
+    navOverlay.classList.remove('active');
+    hamburger.classList.remove('active');
+  }, 500); // Puedes ajustar este valor según lo que necesites
 }
 
 hamburger.addEventListener('click', toggleMenu);
 navOverlay.addEventListener('click', closeMenu);
 
-// ** NUEVO **: cerrar al hacer clic en cualquier enlace del menú
+// Cerrar con retraso al hacer clic en cualquier enlace del menú
 navList.querySelectorAll('a').forEach(link =>
   link.addEventListener('click', closeMenu)
 );
